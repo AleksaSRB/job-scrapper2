@@ -18,7 +18,7 @@ Git nije obavezan (samo za `update.cmd`).
 2. Dupli klik na **`setup.cmd`** → proveri/instalira Node, registruje oba task-a, odmah uradi **prvi prolaz (poslednjih 5 dana sa svih sajtova, 3–8 min)** i otvori http://localhost:3009
 3. Od tada scraper sam proverava sajtove **svakih 15 min** (svaki izvor u svom ritmu), server se diže pri svakom logovanju.
 
-Posle restarta računara ništa ne treba raditi: server se sam diže pri logovanju, scraper nastavlja svakih 15 min — samo otvori http://localhost:3009. Ako se UI ipak ne otvara: dupli klik na **** (pokrene server i otvori browser).
+Posle restarta računara ništa ne treba raditi: server se sam diže pri logovanju, scraper nastavlja svakih 15 min — samo otvori http://localhost:3009. Ako se UI ipak ne otvara: dupli klik na **`pokreni.cmd`** (pokrene server i otvori browser).
 
 Ažuriranje na novu verziju: `update.cmd` (git pull + restart servera; `data/` ostaje). Uklanjanje: `uninstall.cmd` (podaci ostaju).
 
