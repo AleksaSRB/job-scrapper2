@@ -1,0 +1,216 @@
+{
+  "_comment": "Sva pravila za ocenu oglasa (vidi docs/brief.md §3–§14). Regexi su case-insensitive, rade nad tekstom u malim slovima bez dijakritika. `title*` pravila gledaju samo naslov, ostala naslov + opis. Skor: 90+ odličan, 70+ dobar, 50+ moguć, ispod minScore (config.json) se ne prikazuje.",
+
+  "thresholds": { "excellent": 150, "good": 115, "possible": 75 },
+
+  "categoryDescriptionFactor": 0.4,
+  "categories": [
+    { "id": "marketing-coordinator", "label": "Marketing koordinator", "weight": 30,
+      "patterns": [ "marketing (coordinator|assistant|associate|specialist|executive|administrator|generalist|intern|trainee|graduate)", "marketing (operations|project|ops) (coordinator|associate|specialist|assistant)", "(campaign|brand marketing|brand) (coordinator|assistant|specialist|associate)", "junior marketing", "marketing (support|admin)", "\\bmarketer\\b" ] },
+    { "id": "digital-marketing", "label": "Digitalni marketing", "weight": 30,
+      "patterns": [ "digital marketing", "online marketing", "digital (campaign|marketer|acquisition)", "performance marketing (assistant|associate|coordinator|specialist)", "digital (specialist|coordinator|associate|executive|assistant)" ] },
+    { "id": "social-media", "label": "Društvene mreže", "weight": 29,
+      "patterns": [ "social media", "community (manager|coordinator|associate|specialist)", "\\b(tiktok|instagram|linkedin|youtube) (manager|coordinator|specialist|content)", "\\bsocial (content|marketing)" ] },
+    { "id": "crm-email", "label": "CRM / Email marketing", "weight": 29,
+      "patterns": [ "email marketing", "\\bcrm\\b", "lifecycle marketing", "retention marketing", "marketing automation", "campaign operations", "customer lifecycle", "\\b(hubspot|klaviyo|braze|marketo|mailchimp|activecampaign) (specialist|coordinator|associate|admin)" ] },
+    { "id": "content", "label": "Content / Copy", "weight": 28,
+      "patterns": [ "content (marketing|marketer|coordinator|assistant|associate|specialist|operations|manager|creator|writer|editor|strategist)", "copywrit", "\\bcopy (editor|specialist)", "content and social", "seo content", "blog (writer|editor)", "editorial (assistant|coordinator)" ] },
+    { "id": "business-development", "label": "Business Development", "weight": 28,
+      "patterns": [ "business development", "\\bbdr\\b", "commercial (associate|coordinator|specialist|assistant|analyst)", "growth business development" ] },
+    { "id": "sdr", "label": "SDR / Prodaja", "weight": 27,
+      "patterns": [ "sales development", "\\bsdr\\b", "(inbound|outbound|inside) sales", "sales (representative|associate|executive|specialist|rep)\\b", "junior sales", "account development representative", "\\badr\\b" ] },
+    { "id": "customer-success", "label": "Customer Success", "weight": 27,
+      "patterns": [ "customer success", "client success", "customer onboarding", "onboarding (specialist|coordinator|associate|manager)", "implementation (coordinator|specialist|associate)", "customer experience (specialist|associate|coordinator)", "customer (support|service|care) (specialist|associate|representative|coordinator|advocate)" ] },
+    { "id": "sales-ops", "label": "Sales Ops / RevOps", "weight": 27,
+      "patterns": [ "sales (support|operations|ops|administrat|enablement|coordinator|assistant)", "commercial (operations|ops|assistant|admin)", "revenue operations", "\\brevops\\b", "\\bcrm (admin|administrator|operations)", "deal desk" ] },
+    { "id": "business-ops", "label": "Business Operations", "weight": 26,
+      "patterns": [ "business (operations|ops|support|coordinator|associate|assistant|administrator)", "operations (associate|coordinator|specialist|assistant|analyst|executive|generalist|intern)", "junior operations", "\\bops (associate|coordinator|specialist)", "program (coordinator|assistant|associate)", "administrative (assistant|coordinator|associate)", "executive assistant", "office (manager|coordinator|administrator)", "virtual assistant", "\\bchief of staff\\b" ] },
+    { "id": "market-research", "label": "Market research / Analitika", "weight": 26,
+      "patterns": [ "market research", "marketing (analyst|analytics|insights)", "consumer insights", "competitive intelligence", "research (associate|coordinator|assistant|analyst)", "insights (analyst|associate)", "business research" ] },
+    { "id": "partnerships", "label": "Partnerships / Affiliate / Influencer", "weight": 25,
+      "patterns": [ "partnership", "affiliate", "influencer", "creator (partnerships|relations|marketing)", "partner (operations|success|manager|marketing)", "\\balliances\\b" ] },
+    { "id": "seo", "label": "SEO", "weight": 25,
+      "patterns": [ "\\bseo\\b", "organic (growth|marketing|search)", "search marketing", "\\bsem\\b", "digital acquisition" ] },
+    { "id": "growth", "label": "Growth marketing", "weight": 24,
+      "patterns": [ "growth (marketing|marketer|associate|specialist|coordinator|analyst|hacker)", "user acquisition", "acquisition (associate|specialist|coordinator|marketing)", "demand generation", "demand gen", "lead generation", "lead gen" ] },
+    { "id": "ecommerce", "label": "E-commerce", "weight": 24,
+      "patterns": [ "e-?commerce", "marketplace (specialist|coordinator|associate|manager|analyst)", "amazon (marketplace|specialist|account|ppc|brand)", "shopify", "merchandising", "web ?shop", "online store" ] },
+    { "id": "account", "label": "Account koordinacija", "weight": 23,
+      "patterns": [ "account (coordinator|associate|specialist|executive|manager|representative)", "client (services|account|relations|success|success associate)", "junior account", "customer (relations|relationship)" ] },
+    { "id": "project", "label": "Project / Program koordinacija", "weight": 22,
+      "patterns": [ "project (coordinator|assistant|associate|administrator|support|analyst|specialist)", "program (coordinator|assistant|associate)", "junior project", "project management (assistant|associate|intern)", "\\bpmo (assistant|coordinator|analyst)" ] },
+    { "id": "product-marketing", "label": "Product marketing", "weight": 21,
+      "patterns": [ "product marketing", "go-to-market", "\\bgtm\\b", "launch (coordinator|manager|specialist)" ] },
+    { "id": "paid-media", "label": "Paid media / PPC", "weight": 20,
+      "patterns": [ "paid (media|social|search|ads|advertising|acquisition)", "\\bppc\\b", "performance marketing", "media buy", "(google|meta|facebook|tiktok|linkedin) ads", "\\bads (specialist|manager|coordinator)", "campaign manager" ] },
+    { "id": "brand-comms", "label": "Brend / Komunikacije / PR", "weight": 20,
+      "patterns": [ "\\bbrand (coordinator|associate|specialist|assistant|ambassador|marketing)", "communications? (coordinator|associate|specialist|assistant|officer|executive|manager|intern)", "\\bpr (coordinator|assistant|specialist|associate|executive|manager)", "public relations", "\\bmarcom", "marketing communications", "corporate communications", "internal communications", "\\bcomms\\b" ] },
+    { "id": "business-analyst", "label": "Business analyst / Strategija", "weight": 20,
+      "patterns": [ "business (analyst|insights|strategy)", "strategy (analyst|associate|assistant|intern)", "commercial analyst", "operations analyst", "junior analyst", "\\bbi analyst" ] },
+    { "id": "adjacent", "label": "Srodno (HR koordinacija, eventi, podrška…)", "weight": 12, "titleOnly": true,
+      "patterns": [ "(recruit|talent acquisition|recruiting|hr|people) (coordinator|assistant|associate|specialist)", "employer brand", "event (marketing|coordinator|specialist|assistant|manager)", "webinar", "customer (support|service|care|experience)", "client services", "support (specialist|associate|representative|agent)", "\\bsupport\\b.*\\bspecialist\\b", "\\bhelp ?desk\\b", "outreach (specialist|coordinator|associate)", "appointment sett", "scheduling coordinator", "sales assistant", "product (associate|coordinator|specialist|analyst|operations)", "data entry", "\\bcoordinator\\b", "\\bassociate\\b", "\\bassistant\\b" ] }
+  ],
+
+  "seniority": {
+    "juniorTitle": [ "\\bjunior\\b", "\\bjr\\.?\\b", "entry[- ]level", "\\bassociate\\b", "\\bcoordinator\\b", "\\bassistant\\b", "\\bspecialist\\b", "\\brepresentative\\b", "\\bgraduate\\b", "early[- ]career", "\\btrainee\\b", "\\bintern(ship)?\\b", "\\bexecutive\\b(?! (director|vice))", "\\bgeneralist\\b", "\\banalyst\\b", "\\bapprentice" ],
+    "juniorTitleScore": 30,
+    "juniorText": [ "entry[- ]level", "early[- ]career", "recent graduate", "new grad", "fresh graduate", "no (prior )?experience (required|needed|necessary)", "\\b0[- –]?(1|2) years", "\\b1[- –]?(2|3) years", "\\b1\\+? years?", "\\b(one|two) years? of", "junior[- ]level", "graduate (program|scheme|role|position)" ],
+    "juniorTextScore": 15,
+    "managerTitle": [ "\\bmanager\\b", "\\bmanagement\\b", "\\bstrategist\\b", "\\bconsultant\\b", "\\bowner\\b" ],
+    "managerTitleScore": -10,
+    "seniorTitle": [ "\\bsenior\\b", "\\bsr\\.?\\b", "\\blead\\b", "\\bhead of\\b", "\\bhead\\b,", "\\bdirector\\b", "\\bvp\\b", "vice president", "\\bchief\\b", "\\bcmo\\b", "\\bcro\\b", "\\bcoo\\b", "\\bceo\\b", "\\bprincipal\\b", "\\bpartner\\b(?!ship)", "\\bstaff\\b", "\\bexpert\\b", "\\barchitect\\b", "\\bmanaging\\b", "\\bexecutive director\\b", "\\bgroup manager\\b", "\\bsupervisor\\b", "\\bsenior manager\\b", "\\bteam lead" ],
+    "seniorTitleScore": -80,
+    "siteEntryScore": 15,
+    "siteSeniorScore": -30,
+    "years": { "zeroToTwoScore": 25, "threeToFourScore": -30, "fivePlusScore": -70 }
+  },
+
+  "remote": {
+    "remoteText": [ "\\bremote\\b", "work from (home|anywhere)", "working from home", "\\bwfh\\b", "home[- ]based", "distributed team", "location independent", "\\btelecommut", "\\bremote-first" ],
+    "hybridText": [ "\\bhybrid\\b", "\\d ?(days?|x) (a |per |/ ?)?week in (the )?office", "(two|three|2|3) days (in|at) (the )?office", "office (attendance|presence) (required|expected)", "split (your )?time between (home|remote) and (the )?office", "in[- ]office (days|presence)" ],
+    "onsiteText": [ "\\bon[- ]?site\\b", "\\bin[- ]office\\b", "office[- ]based", "\\bin[- ]person\\b", "relocation (is )?required", "must (be willing to )?relocate", "\\bfrom our office\\b", "\\bat our office\\b", "\\bwork (in|from) (our|the) (hq|headquarters|office)\\b" ],
+    "remoteScore": 35,
+    "hybridScore": -100,
+    "onsiteScore": -100,
+    "unknownScore": -25
+  },
+
+  "eligibility": {
+    "serbia": [ "\\bserbia\\b", "\\bsrbija\\b", "\\bbelgrade\\b", "\\bbeograd\\b", "\\bbalkan", "eastern europe", "\\bcee\\b", "central (and|&) eastern europe", "south[- ]?east(ern)? europe", "\\bsee region\\b", "western balkans", "ex[- ]?yu\\b", "adriatic" ],
+    "serbiaScore": 40,
+    "worldwide": [ "\\bworldwide\\b", "\\banywhere\\b", "\\bglobal(ly)?\\b", "\\binternational\\b", "any (location|country|where)", "all (countries|locations|regions)", "\\bwork from anywhere\\b", "location[- ]independent", "\\bno location restriction", "\\bopen to (all|any) (countries|locations|regions)", "\\bapac, emea\\b", "\\bemea, apac\\b", "americas, europe", "europe, (americas|apac|asia|latam|africa)" ],
+    "worldwideScore": 40,
+    "europe": [ "\\beurope\\b", "\\beuropean\\b", "\\bemea\\b", "\\beu\\b", "\\bcet\\b", "\\bcest\\b", "european (union|time ?zone|hours)", "\\bcentral europe", "\\beuropean timezone", "\\butc ?\\+ ?[0-3]\\b", "\\bgmt ?\\+ ?[0-3]\\b", "\\bcountries in europe\\b" ],
+    "europeScore": 15,
+    "otherRegion": [ "\\busa?\\b", "united states", "\\bu\\.s\\.", "\\bamerica", "\\bcanada\\b", "\\bcanadian\\b", "\\bmexico\\b", "\\blatam\\b", "latin america", "\\bbrazil\\b", "\\bargentina\\b", "\\bcolombia\\b", "\\buk\\b", "united kingdom", "\\bengland\\b", "\\blondon\\b", "\\bireland\\b", "\\baustralia\\b", "\\bnew zealand\\b", "\\bapac\\b", "\\basia\\b", "\\bindia\\b", "\\bphilippines\\b", "\\bpakistan\\b", "\\bsingapore\\b", "\\bjapan\\b", "\\bafrica\\b", "\\bnigeria\\b", "\\bkenya\\b", "\\bsouth africa\\b", "\\begypt\\b", "\\bmiddle east\\b", "\\buae\\b", "\\bdubai\\b", "\\bsaudi\\b", "\\bgermany\\b", "\\bdeutschland\\b", "\\bfrance\\b", "\\bspain\\b", "\\bportugal\\b", "\\bitaly\\b", "\\bnetherlands\\b", "\\bbelgium\\b", "\\bpoland\\b", "\\bromania\\b", "\\bbulgaria\\b", "\\bhungary\\b", "\\bczech", "\\bslovakia\\b", "\\baustria\\b", "\\bswitzerland\\b", "\\bsweden\\b", "\\bnorway\\b", "\\bdenmark\\b", "\\bfinland\\b", "\\bgreece\\b", "\\bturkey\\b", "\\bukraine\\b", "\\blithuania\\b", "\\blatvia\\b", "\\bestonia\\b", "\\bcroatia\\b", "\\bslovenia\\b", "\\bnicaragua\\b", "\\bguatemala\\b", "\\bcosta rica\\b", "\\bhonduras\\b", "\\bvenezuela\\b", "\\bperu\\b", "\\bchile\\b", "\\bmalaysia\\b", "\\bindonesia\\b", "\\bvietnam\\b", "\\bthailand\\b", "\\bisrael\\b", "\\bnorth(ern)? america\\b", "\\boceania\\b", "\\bgeorgia\\b", "\\barmenia\\b", "\\bazerbaijan\\b", "\\bkazakhstan\\b", "\\bmoldova\\b", "\\bbelarus\\b", "\\bcyprus\\b", "\\bmalta\\b", "\\b(florida|texas|california|new york|illinois|washington|massachusetts|colorado|arizona|carolina|pennsylvania|ohio|michigan|virginia|jersey|nevada|utah|oregon|minnesota|tennessee|missouri|indiana|maryland|wisconsin)\\b", "\\b[a-z .]+, (ga|tx|ca|ny|fl|il|wa|ma|co|az|nc|sc|pa|oh|mi|va|nj|nv|ut|or|mn|tn|mo|in|md|wi|dc)\\b", "\\b(toronto|vancouver|montreal|london|manchester|dublin|sydney|melbourne|berlin|munich|paris|madrid|barcelona|amsterdam|lisbon|warsaw|prague|vienna|zurich|stockholm|copenhagen|oslo|helsinki|milan|rome|athens|istanbul|dubai|singapore|tokyo|mumbai|bangalore|manila|mexico city|sao paulo|buenos aires|bogota|lima|santiago|cape town|lagos|nairobi|cairo|tel aviv)\\b" ],
+    "excludeText": [
+      "\\b(us|usa|u\\.s\\.|united states|canada|uk|u\\.k\\.|united kingdom|australia|eu|european union|schengen|germany|france|netherlands|spain|portugal|poland|italy|ireland|mexico|india|philippines|latam|latin america|north america)[- ](based )?(only|residents? only|citizens? only|candidates only|applicants only)\\b",
+      "\\bonly (us|usa|uk|eu|canadian|american|british|australian|european union) (residents|citizens|candidates|applicants|based)",
+      "must (be |currently )?(reside|residing|live|living|be located|be based|be physically located|be legally (authorized|eligible)|have the right)[^.\\n]{0,25}\\b(in|within) (the )?(us|usa|u\\.s\\.|united states|canada|uk|u\\.k\\.|united kingdom|australia|eu|european union|schengen|germany|france|netherlands|spain|portugal|poland|italy|ireland|mexico|india|philippines|latam|latin america|north america|nordics|dach|benelux)\\b",
+      "(based|located|residing|resident|living) (in|within) (the )?(us|usa|u\\.s\\.|united states|canada|uk|u\\.k\\.|united kingdom|australia|eu|european union|schengen|germany|france|netherlands|spain|portugal|poland|italy|ireland|mexico|india|philippines|latam|latin america|north america|nordics|dach|benelux)\\b[^.\\n]{0,30}\\b(required|is required|mandatory|is a must|is essential|only)",
+      "(us|u\\.s\\.|united states|canadian|uk|australian|eu|european union) (work )?(authori[sz]ation|work permit|citizenship|passport|visa) (is )?(required|mandatory|needed|is a must)",
+      "(authori[sz]ed|eligible|right) to work in (the )?(us|usa|u\\.s\\.|united states|canada|uk|united kingdom|australia|eu|european union|germany|france|netherlands|spain|ireland|poland|italy)\\b[^.\\n]{0,40}(required|mandatory|must|without sponsorship)",
+      "\\bopen (only )?to (candidates|applicants|residents|those) (based|located|residing|living) in (the )?(us|usa|united states|canada|uk|united kingdom|australia|eu|european union|germany|france|netherlands|spain|portugal|poland|italy|ireland|latam|india|philippines)\\b",
+      "\\b(us|usa|united states|uk|canada|australia|eu|european union)[- ]based (candidates|applicants|only|role|position|remote)\\b",
+      "\\bremote (within|in|from) (the )?(us|usa|united states|canada|uk|united kingdom|australia|germany|france|netherlands|spain|portugal|poland|italy|ireland|india|philippines|latam|mexico)( only)?\\b(?![^.\\n]{0,40}(serbia|europe|emea|worldwide|anywhere))",
+      "\\bnot (able|eligible) to (hire|employ|consider)[^.\\n]{0,40}(outside|other countries|international)",
+      "\\bwe (can only|only) (hire|employ|consider|accept)[^.\\n]{0,30}\\b(in|from|within) (the )?(us|usa|united states|canada|uk|united kingdom|australia|eu|european union)\\b",
+      "\\beu (citizenship|passport|work permit|residency) (is )?(required|mandatory|needed)\\b",
+      "\\bmust hold (a |an )?(eu|european union|us|uk) (citizenship|passport|work permit)\\b"
+    ],
+    "excludeScore": -100,
+    "unclearScore": -25
+  },
+
+  "employment": {
+    "fullTimeText": [ "full[- ]?time", "\\bpermanent\\b", "\\b40 hours\\b", "regular employment", "\\bemployee\\b" ],
+    "fullTimeScore": 25,
+    "partTimeText": [ "part[- ]?time", "\\b(10|15|20|25|30) hours (a |per |/ ?)week", "\\bhourly (gig|task|micro)", "\\bfreelance gig\\b", "\\bseasonal\\b", "\\btemporary (position|role|contract)\\b", "\\b(3|6)[- ]month (contract|project)\\b" ],
+    "partTimeScore": -40,
+    "contractScore": 10,
+    "freelanceScore": -20,
+    "internshipScore": -25,
+    "unpaid": [ "\\bunpaid\\b", "\\bvolunteer\\b", "\\bno (salary|pay|compensation)\\b", "\\bwithout (pay|salary|compensation)\\b", "\\bequity[- ]only\\b", "\\bfor (course )?credit only\\b" ],
+    "unpaidScore": -100,
+    "commissionOnly": [ "commission[- ]only", "\\b100% commission\\b", "\\bcommission[- ]based (only|compensation|pay|role|position)\\b", "\\bno base (salary|pay)\\b", "\\bpaid (only|solely|purely) (on|by) commission\\b", "\\bcommission only\\b" ],
+    "commissionOnlyScore": -100
+  },
+
+  "language": {
+    "foreignLanguages": "german|deutsch|french|francais|italian|italiano|spanish|espanol|castellano|dutch|nederlands|portuguese|portugues|swedish|svenska|norwegian|norsk|danish|dansk|finnish|suomi|polish|polski|czech|slovak|slovenian|hungarian|romanian|bulgarian|greek|turkish|russian|arabic|chinese|mandarin|cantonese|japanese|korean|hebrew|ukrainian|albanian|flemish|estonian|latvian|lithuanian|vietnamese|thai|indonesian|bahasa|malay|tagalog|filipino|hindi|urdu|farsi|persian|icelandic|afrikaans|swahili",
+    "requiredPatterns": [
+      "\\b(LANG)[a-z]*[- ](speaking|speaker|native|fluent|fluency)\\b",
+      "(fluent|fluency|proficien|native|advanced|excellent|business[- ]level|professional|c1|c2|b2)[^.\\n]{0,20}\\b(in |of )?(LANG)\\b",
+      "\\b(LANG)\\b[^.\\n]{0,15}\\b(is |are )?(required|mandatory|essential|a must|must[- ]have|necessary|needed|obligatory)\\b",
+      "\\b(LANG)\\b( language)?[^.\\n]{0,10}\\((required|mandatory|c1|c2|b2|native|fluent)\\)",
+      "\\b(must|need to|has to|required to|should) (speak|be fluent in|be a native|have (fluent|native|excellent))[^.\\n]{0,10}\\b(LANG)\\b",
+      "\\bnative (level |speaker of |proficiency in )?(LANG)\\b",
+      "\\b(LANG)\\b (as a |as )?(native|mother) (tongue|language)",
+      "\\bbilingual[^.\\n]{0,15}\\b(LANG)\\b"
+    ],
+    "exceptions": [ "\\bplus\\b", "\\bbonus\\b", "advantage", "nice[- ]to[- ]have", "preferred", "not required", "optional", "desirable", "welcome", "appreciated", "\\bor\\b [a-z]+ language", "any (other|additional|second) language", "is a (big )?plus", "would be" ],
+    "score": -100,
+    "englishOnlyScore": 10
+  },
+
+  "timezone": {
+    "positive": [ "\\bcet\\b", "\\bcest\\b", "central european (time|summer)", "\\bgmt ?\\+ ?[12]\\b", "\\butc ?\\+ ?[12]\\b", "europe(an)? (time ?zone|hours|business hours|working hours)", "\\bemea (hours|time ?zone|working hours)", "\\bflexible (hours|schedule|working hours)", "\\basync(hronous)?\\b", "work(ing)? hours[^.\\n]{0,20}europe", "overlap with (europe|cet|emea)" ],
+    "positiveScore": 15,
+    "negative": [ "\\bpst\\b", "\\bpdt\\b", "pacific (time|standard time|hours|business hours)", "\\b(us|u\\.s\\.|american|north american|us[- ]based) (business |working )?hours\\b", "\\bmst\\b", "mountain time", "\\best\\b (hours|time ?zone|business hours|working hours|overlap)", "eastern (time|standard time)( zone)?[^.\\n]{0,20}(required|hours|overlap|full)", "(9|8)[- ]?(am)? ?(to|-|–) ?(5|6) ?(pm)? ?(pst|est|pt|et|cst|mst)\\b", "\\bnight shift\\b", "\\bovernight\\b", "\\bgraveyard shift\\b", "\\bus (time|time ?zone)s? (required|only|overlap)", "\\bwork(ing)? (us|american|pacific|eastern) (hours|time)", "\\b(cst|ct) (hours|time ?zone|business hours)\\b", "central (standard )?time" ],
+    "negativeScore": -40
+  },
+
+  "negatives": {
+    "title": [
+      { "label": "IT / inženjering", "score": -100, "patterns": [ "\\b(software|frontend|front-end|backend|back-end|full[- ]?stack|web|mobile|ios|android|devops|cloud|platform|data|ml|ai|machine learning|qa|test|automation|site reliability|security|network|systems?|embedded|firmware|hardware|electrical|mechanical|civil|structural|solutions?|sales|marketing|growth|analytics|integration|implementation|support|customer) engineer", "\\bengineer(ing)?\\b", "\\bdeveloper\\b", "\\bprogrammer\\b", "\\bdevops\\b", "\\bsre\\b", "\\bqa\\b", "\\bsdet\\b", "\\btester\\b", "\\bdata scientist\\b", "\\bdata engineer", "\\barchitect\\b", "\\b(react|node|python|java|php|ruby|golang|\\.net|c\\+\\+|rust|kotlin|swift|salesforce|sap|oracle|servicenow|workday) (developer|engineer|consultant|admin|architect)", "\\bwordpress developer", "\\bshopify developer", "\\bwebflow developer", "\\bsystem administrator", "\\bsysadmin\\b", "\\bcybersecurity\\b", "\\bpenetration", "\\bit support\\b", "\\bhelp ?desk technician", "\\btechnical support engineer", "\\bdatabase\\b", "\\bblockchain\\b", "\\bsmart contract" ] },
+      { "label": "dizajn / kreativa kao osnovni posao", "score": -100, "patterns": [ "\\b(graphic|ux|ui|ux/ui|ui/ux|product|visual|motion|web|brand|3d|game|interior|industrial|fashion) designer", "\\bdesigner\\b", "\\bart director\\b", "\\bcreative director\\b", "\\bvideo editor\\b", "\\bvideographer\\b", "\\bphotographer\\b", "\\banimator\\b", "\\billustrator\\b", "\\bmotion graphics" ] },
+      { "label": "finansije / pravo / medicina / drugo", "score": -100, "patterns": [ "\\baccountant\\b", "\\baccounting\\b", "\\bbookkeep", "\\bcpa\\b", "\\bacca\\b", "\\bauditor\\b", "\\btax\\b", "\\bpayroll\\b", "\\bcontroller\\b", "\\bfinancial analyst", "\\bfp&a\\b", "\\bloan\\b", "\\bmortgage\\b", "\\baccounts (payable|receivable)\\b", "\\bpayable\\b", "\\breceivable\\b", "\\bsettlements?\\b", "\\btreasury\\b", "\\breconciliation\\b", "\\bcredit analyst", "\\bcollections? (agent|specialist)", "\\bbilling\\b", "\\bcrypto\\b", "\\bforex\\b", "\\bcasino\\b", "\\bigaming\\b", "\\bbetting\\b", "\\badult\\b", "\\bonlyfans\\b", "\\bchatter\\b", "\\bactuar", "\\bunderwrit", "\\blawyer\\b", "\\battorney\\b", "\\blegal counsel", "\\bparalegal\\b", "\\bcompliance officer", "\\bnurse\\b", "\\bphysician\\b", "\\bdoctor\\b", "\\bmedical\\b", "\\bclinical\\b", "\\bpharmac", "\\btherapist\\b", "\\bpsycholog", "\\bdentist", "\\bveterinar", "\\bteacher\\b", "\\btutor\\b", "\\bprofessor\\b", "\\bdriver\\b", "\\bwarehouse\\b", "\\bmechanic\\b", "\\btechnician\\b", "\\bchef\\b", "\\bcook\\b", "\\bsecurity guard", "\\bcaregiver", "\\btranslator\\b", "\\binterpreter\\b", "\\btranscription", "\\bscientist\\b", "\\bresearch scientist", "\\bchemist\\b", "\\bbiolog", "\\bgeolog", "\\bpilot\\b", "\\bcrypto trader", "\\btrader\\b", "\\brecruiter\\b(?! coordinator)", "\\bheadhunter", "\\btalent partner", "\\bsourcer\\b", "\\bproduct manager\\b", "\\bproduct owner\\b", "\\bscrum master\\b", "\\bagile coach\\b", "\\bdata analyst\\b", "\\bbi developer", "\\bsql\\b", "\\bpower bi\\b", "\\btableau\\b", "\\bmodel\\b", "\\bactor\\b", "\\bvoice ?over", "\\bsurvey (taker|participant)", "\\bpaid (survey|study|research participant)", "\\bfocus group", "\\bmystery shopper", "\\bproduct tester", "\\bbeta tester", "\\bai (trainer|rater|evaluator|annotator|tutor)", "\\bannotat", "\\bdata label", "\\bsearch quality rater", "\\bcontent moderator" ] },
+      { "label": "generičan oglas / nije konkretna pozicija", "score": -100, "patterns": [ "\\bopen application\\b", "\\bgeneral application\\b", "\\bdon'?t see (what|a role)", "\\btalent (pool|community|network)\\b", "\\bfuture (opportunities|openings|roles)\\b", "\\bspeculative application\\b", "\\bjoin our talent\\b", "\\bexpression of interest\\b", "\\bmultiple (roles|positions)\\b" ] },
+      { "label": "ocenjivanje / anotacija / video", "score": -100, "patterns": [ "\\brater\\b", "\\bassessor\\b", "\\bevaluator\\b", "\\bquality assurance\\b", "\\b(video|shorts|film|photo|reels) editor\\b", "\\bediting (specialist|assistant)\\b", "\\bmotion designer\\b" ] },
+      { "label": "oglas na drugom jeziku / za drugo tržište", "score": -60, "patterns": [ "\\bventas\\b", "\\bdesarrollo\\b", "\\brepresentante\\b", "\\bgerente\\b", "\\bvendedor", "\\basistente\\b", "\\bcomercial\\b", "\\bvertrieb", "\\bmitarbeiter", "\\bwerkstudent", "\\bkundenberat", "\\bpraktikant", "\\bkaufm", "\\bsachbearbeiter", "\\bkoordinator\\b", "\\bcoördinator\\b", "\\bmedewerker\\b", "\\bcharge\\(e\\)? de\\b", "\\bresponsable\\b", "\\bstagiaire\\b", "\\balternance\\b", "\\b\\(?m/w/d\\)?\\b", "\\b\\(?h/f\\)?\\b", "\\b\\(?m/f\\)?\\b(?! ?/ ?d)", "\\bstrateg\\b", "\\bmenadzer\\b", "\\bspecijalist" ] },
+      { "label": "srodna oblast, niži prioritet (HR / logistika / podrška / admin)", "score": -30, "patterns": [ "\\brecruit", "\\bpeople (operations|ops|partner|team)\\b", "\\btalent\\b", "\\bhr\\b", "\\bhuman resources\\b", "\\bpayroll\\b", "\\blogistics\\b", "\\btransportation\\b", "\\bfreight\\b", "\\bdispatch", "\\bfield service\\b", "\\btrucking\\b", "\\bfleet\\b", "\\bsupply chain\\b", "\\bprocurement\\b", "\\bcustomer (support|service|care)\\b", "\\bsupport (specialist|agent|representative|associate)\\b", "\\bhelp ?desk\\b", "\\bvirtual assistant\\b", "\\bexecutive assistant\\b", "\\badministrative\\b", "\\bdata entry\\b", "\\bintake\\b", "\\bcompliance\\b", "\\bquality (analyst|specialist)\\b" ] },
+      { "label": "verovatno senior / iskusan", "score": -30, "patterns": [ "\\benterprise\\b", "\\bstrategic\\b", "\\bkey account", "\\bmid[- ]market\\b", "\\bregional\\b", "\\bcountry manager\\b", "\\bglobal (head|manager|director|lead)\\b", "\\bhead\\b", "\\bmiddle\\b", "\\bmid[- ]level\\b", "\\bmid[- ]senior\\b", "\\bexperienced\\b", "\\bseasoned\\b", "\\bexpert\\b" ] },
+      { "label": "sumnjiva prodaja / MLM", "score": -60, "patterns": [ "\\bcold call", "\\bdoor[- ]to[- ]door", "\\bmlm\\b", "\\bnetwork marketing\\b", "\\bindependent (sales|business) (agent|owner|distributor)", "\\binsurance (agent|sales)", "\\breal estate agent", "\\btelemarket", "\\btelesales", "\\bcloser\\b", "\\bhigh[- ]ticket", "\\bappointment setter\\b", "\\bphone sales", "\\bcall cent(er|re) agent" ] },
+      { "label": "sumnjivi format", "score": -40, "patterns": [ "\\$\\d", "\\bearn (up to|extra)", "\\bwork from home (jobs?|opportunity)\\b", "\\bimmediate start\\b", "\\bno experience needed\\b", "\\bmake money" ] }
+    ],
+    "text": [
+      { "label": "agresivna prodaja / cold calling", "score": -20, "patterns": [ "\\b(50|60|70|80|100|150|200)\\+? (cold )?(calls|dials) (a |per )?day\\b", "\\bhigh[- ]volume (cold )?(calling|outbound|dials)\\b", "\\bcold[- ]calling is (a )?(core|key|major|primary|main) part\\b", "\\baggressive (sales |commission )?(targets|quota|plan)\\b", "\\bhunter mentality\\b", "\\bdoor[- ]to[- ]door\\b" ] },
+      { "label": "tehnički/analitički zahtevi (SQL, BPMN, arhitektura)", "score": -15, "patterns": [ "\\b(strong|advanced|expert|solid) (sql|python|r) (skills|knowledge|experience)\\b", "\\bbpmn\\b", "\\bsystem architecture\\b", "\\brequirements engineering\\b", "\\bsoftware requirements\\b", "\\buml\\b", "\\bsdlc\\b", "\\bapi (integration|development)\\b", "\\bwriting (sql|code)\\b", "\\bstatistical (modeling|modelling|analysis)\\b", "\\beconometric", "\\bregression (analysis|models)\\b" ] },
+      { "label": "veliki paid budžet / specijalizovano iskustvo", "score": -15, "patterns": [ "\\bmanag(e|ing|ed) (a |an )?(monthly |annual |yearly )?(ad |media |marketing |paid )?(budget|spend)s? (of|over|exceeding|above) \\$?[1-9]\\d{0,2}(k|,000|m| million)\\b", "\\b(large|multi[- ]million|7[- ]figure|six[- ]figure|seven[- ]figure) (ad |media |marketing )?(budget|spend)s?\\b", "\\benterprise (portfolio|accounts|book of business)\\b[^.\\n]{0,30}(manag|own)", "\\bquota[- ]carrying\\b", "\\bclosing (experience|role)\\b[^.\\n]{0,30}(required|must)", "\\bproven track record of (closing|exceeding quota|hitting quota)\\b" ] },
+      { "label": "senior u opisu", "score": -25, "patterns": [ "\\b(this is a|this is an|we are looking for a|looking for an?|seeking an?) (senior|seasoned|experienced|veteran|expert)[- ]level\\b", "\\bsenior[- ]level (role|position|candidate)\\b", "\\b(extensive|deep|significant|substantial|proven) (leadership|management) experience\\b", "\\b(manage|lead|build|grow) (a |the |our )?team of\\b", "\\bdirect reports\\b", "\\bpeople management (experience|responsibilit)", "\\bexecutive[- ]level\\b", "\\bc[- ]level (stakeholder|audience|executives)\\b[^.\\n]{0,30}(present|report|manag)" ] },
+      { "label": "MLM / plati da radiš", "score": -100, "patterns": [ "\\b(registration|training|starter|sign[- ]?up|onboarding) fee\\b", "\\bbuy (your own |a )?(starter|product) (kit|package)\\b", "\\bmulti[- ]level marketing\\b", "\\bpyramid\\b", "\\bpay to (apply|start|join)\\b", "\\binvestment required\\b", "\\bmust purchase\\b" ] }
+    ]
+  },
+
+  "positives": [
+    { "id": "training", "label": "obuka / onboarding obezbeđeni", "score": 15, "badge": "Obuka", "patterns": [ "\\b(full |paid |comprehensive |structured |extensive )?(training|onboarding) (is |will be )?(provided|included|given|offered)\\b", "\\bwe (will |'ll )?(train|teach|coach) you\\b", "\\bmentorship (program|provided)\\b", "\\blearning (and|&) development (budget|program|opportunities)\\b", "\\bgraduate (program|programme|scheme)\\b", "\\bno (prior )?experience (required|needed|necessary)\\b", "\\bwilling(ness)? to learn\\b" ] },
+    { "id": "graduate", "label": "graduate / early career", "score": 15, "badge": "Graduate", "patterns": [ "\\b(recent|new|fresh) (graduate|grad)s?\\b", "\\bearly[- ]career\\b", "\\bgraduate (role|position|program|programme|scheme|hire)\\b", "\\bentry[- ]level\\b", "\\bfirst (job|role|step)\\b", "\\bcareer starter\\b", "\\bstudents? (welcome|encouraged)\\b", "\\bmaster'?s (degree )?(graduate|student)s?\\b" ] },
+    { "id": "business-degree", "label": "traži se poslovna diploma (business/marketing/economics)", "score": 10, "patterns": [ "\\b(bachelor|master|degree|ba|bsc|msc|mba)[^.\\n]{0,30}\\b(business|marketing|economics|commerce|management|communications|administration)\\b", "\\b(business|marketing|economics|commerce|management|communications) (degree|graduate|background|studies|administration)\\b", "\\bbusiness (administration|school)\\b", "\\bdegree in (business|marketing|economics|commerce|management|communications)\\b" ] },
+    { "id": "english-only", "label": "traži se samo engleski", "score": 0, "patterns": [ "\\b(fluent|excellent|professional|business|strong|native|c1|c2|b2)[^.\\n]{0,15}english\\b", "\\benglish[^.\\n]{0,15}(fluent|proficien|required|c1|c2|b2|native|excellent|is a must|mandatory|essential)\\b", "\\benglish[- ]speaking\\b" ] },
+    { "id": "serbia-named", "label": "Srbija / Balkan izričito pomenuti u opisu", "score": 20, "badge": "Srbija pomenuta", "patterns": [ "\\bserbia\\b", "\\bbelgrade\\b", "\\bbalkans?\\b", "\\bwestern balkans\\b", "\\bsouth[- ]?east(ern)? europe\\b", "\\bcentral (and|&) eastern europe\\b", "\\bcee region\\b", "\\bex[- ]?yu\\b" ] },
+    { "id": "eu-hours-ok", "label": "fleksibilno / asinhrono", "score": 0, "patterns": [ "\\basync[- ]first\\b", "\\bflexible working\\b" ] }
+  ],
+
+  "tools": [
+    { "label": "HubSpot", "patterns": [ "\\bhubspot\\b" ] },
+    { "label": "Salesforce", "patterns": [ "\\bsalesforce\\b", "\\bsfdc\\b" ] },
+    { "label": "Mailchimp", "patterns": [ "\\bmailchimp\\b" ] },
+    { "label": "Klaviyo", "patterns": [ "\\bklaviyo\\b" ] },
+    { "label": "Braze", "patterns": [ "\\bbraze\\b" ] },
+    { "label": "Marketo", "patterns": [ "\\bmarketo\\b" ] },
+    { "label": "ActiveCampaign", "patterns": [ "\\bactivecampaign\\b", "\\bactive campaign\\b" ] },
+    { "label": "Iterable", "patterns": [ "\\biterable\\b" ] },
+    { "label": "GA4", "patterns": [ "\\bga4\\b", "\\bgoogle analytics\\b" ] },
+    { "label": "Looker Studio", "patterns": [ "\\blooker studio\\b", "\\bdata studio\\b" ] },
+    { "label": "Google Ads", "patterns": [ "\\bgoogle ads\\b", "\\badwords\\b", "\\bppc\\b", "\\bpaid search\\b" ] },
+    { "label": "Meta Ads", "patterns": [ "\\bmeta ads\\b", "\\bfacebook ads\\b", "\\binstagram ads\\b", "\\bads manager\\b", "\\bpaid social\\b" ] },
+    { "label": "LinkedIn Ads", "patterns": [ "\\blinkedin ads\\b", "\\blinkedin campaign manager\\b" ] },
+    { "label": "TikTok", "patterns": [ "\\btiktok\\b" ] },
+    { "label": "SEO", "patterns": [ "\\bseo\\b", "\\bkeyword research\\b", "\\bsearch console\\b" ] },
+    { "label": "SEMrush", "patterns": [ "\\bsemrush\\b" ] },
+    { "label": "Ahrefs", "patterns": [ "\\bahrefs\\b" ] },
+    { "label": "Canva", "patterns": [ "\\bcanva\\b" ] },
+    { "label": "WordPress", "patterns": [ "\\bwordpress\\b" ] },
+    { "label": "Webflow", "patterns": [ "\\bwebflow\\b" ] },
+    { "label": "Figma", "patterns": [ "\\bfigma\\b" ] },
+    { "label": "Adobe", "patterns": [ "\\badobe\\b", "\\bphotoshop\\b", "\\billustrator\\b", "\\bpremiere\\b" ] },
+    { "label": "Shopify", "patterns": [ "\\bshopify\\b" ] },
+    { "label": "Amazon", "patterns": [ "\\bamazon (seller|marketplace|fba|ads|brand)\\b", "\\bseller central\\b" ] },
+    { "label": "WooCommerce", "patterns": [ "\\bwoocommerce\\b" ] },
+    { "label": "Excel", "patterns": [ "\\bexcel\\b", "\\bgoogle sheets\\b", "\\bspreadsheets?\\b" ] },
+    { "label": "Notion", "patterns": [ "\\bnotion\\b" ] },
+    { "label": "Asana", "patterns": [ "\\basana\\b" ] },
+    { "label": "Monday.com", "patterns": [ "\\bmonday\\.com\\b" ] },
+    { "label": "Trello", "patterns": [ "\\btrello\\b" ] },
+    { "label": "Jira", "patterns": [ "\\bjira\\b" ] },
+    { "label": "Slack", "patterns": [ "\\bslack\\b" ] },
+    { "label": "Zapier", "patterns": [ "\\bzapier\\b", "\\bmake\\.com\\b" ] },
+    { "label": "AI alati", "patterns": [ "\\bchatgpt\\b", "\\bgenerative ai\\b", "\\bai tools\\b", "\\bclaude\\b", "\\bgemini\\b", "\\bcopilot\\b" ] },
+    { "label": "Apollo/Outreach", "patterns": [ "\\bapollo\\.io\\b", "\\bapollo\\b", "\\boutreach\\.io\\b", "\\bsalesloft\\b", "\\blemlist\\b", "\\bzoominfo\\b", "\\blinkedin sales navigator\\b", "\\bsales navigator\\b" ] },
+    { "label": "Intercom/Zendesk", "patterns": [ "\\bintercom\\b", "\\bzendesk\\b", "\\bfreshdesk\\b", "\\bgorgias\\b" ] },
+    { "label": "Hootsuite/Buffer", "patterns": [ "\\bhootsuite\\b", "\\bbuffer\\b", "\\bsprout social\\b", "\\blater\\.com\\b", "\\bmetricool\\b" ] },
+    { "label": "CapCut", "patterns": [ "\\bcapcut\\b" ] }
+  ],
+  "toolScore": 2,
+  "toolScoreMax": 10
+}

@@ -1,0 +1,76 @@
+{
+  "port": 3009,
+  "lookbackDays": 5,
+  "intervalMin": 15,
+  "minScore": 75,
+  "ntfyTopic": "",
+  "sources": {
+    "himalayas": { "enabled": true, "everyMin": 15 },
+    "wwr": { "enabled": true, "everyMin": 30 },
+    "remoteok": { "enabled": true, "everyMin": 60 },
+    "workingnomads": { "enabled": true, "everyMin": 60 },
+    "jobrack": { "enabled": true, "everyMin": 30 },
+    "linkedin": { "enabled": true, "everyMin": 60 },
+    "wellfound": { "enabled": true, "everyMin": 360 },
+    "jobicy": { "enabled": true, "everyMin": 60 },
+    "remotive": { "enabled": true, "everyMin": 360 }
+  },
+  "himalayas": {
+    "country": "RS",
+    "maxPages": 2,
+    "queries": [
+      "marketing coordinator", "marketing associate", "marketing assistant", "marketing specialist",
+      "digital marketing", "social media", "content marketing", "email marketing", "crm",
+      "seo specialist", "performance marketing", "growth marketing", "product marketing", "brand coordinator", "communications coordinator",
+      "business development representative", "sales development representative", "sales operations", "sales support",
+      "account coordinator", "customer success", "onboarding specialist", "partnerships", "market research",
+      "business operations", "operations coordinator", "project coordinator", "ecommerce", "business analyst", "lead generation"
+    ]
+  },
+  "wwr": {
+    "feeds": ["remote-sales-and-marketing-jobs", "remote-customer-support-jobs", "remote-management-and-finance-jobs", "remote-product-jobs", "all-other-remote-jobs"]
+  },
+  "remoteok": {
+    "tags": ["marketing", "sales", "customer support", "seo", "social media", "content", "growth", "ecommerce"]
+  },
+  "workingnomads": {
+    "categories": ["Marketing", "Sales", "Customer Success", "Administration", "Management", "Writing"]
+  },
+  "jobrack": {
+    "categories": ["sales-marketing", "seo", "content-writer", "support", "executive-assistant", "project-manager"],
+    "maxPages": 2,
+    "listPages": 3,
+    "maxDetails": 40
+  },
+  "linkedin": {
+    "serbia": {
+      "location": "Serbia",
+      "maxPages": 1,
+      "queries": [
+        "marketing coordinator", "marketing specialist", "digital marketing", "social media", "content marketing", "email marketing",
+        "seo", "business development representative", "sales development representative", "sales operations",
+        "customer success", "account coordinator", "operations coordinator", "project coordinator", "market research", "ecommerce"
+      ]
+    },
+    "europe": {
+      "location": "European Union",
+      "maxPages": 1,
+      "queries": ["marketing coordinator remote", "digital marketing specialist remote", "sales development representative remote", "customer success associate remote", "business development representative remote", "social media coordinator remote"]
+    },
+    "maxDetails": 50
+  },
+  "wellfound": {
+    "maxPages": 4,
+    "paths": ["/role/r/social-media-manager", "/role/r/marketing", "/role/r/digital-marketing", "/role/r/sales", "/role/l/marketing/europe", "/role/r/account-executive"]
+  },
+  "jobicy": {
+    "industries": ["marketing", "business", "management"],
+    "count": 50
+  },
+  "blockedCompanies": [],
+  "fx": {
+    "EUR": 1, "USD": 0.88, "GBP": 1.16, "CHF": 1.06, "CAD": 0.63, "AUD": 0.57, "NZD": 0.52, "SGD": 0.67, "RSD": 0.0085,
+    "PLN": 0.235, "SEK": 0.09, "NOK": 0.086, "DKK": 0.134, "CZK": 0.04, "RON": 0.2, "HUF": 0.0025, "BAM": 0.51,
+    "INR": 0.0102, "BRL": 0.16, "MXN": 0.047, "ZAR": 0.049, "JPY": 0.0058
+  }
+}

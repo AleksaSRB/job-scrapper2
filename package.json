@@ -1,0 +1,16 @@
+{
+  "name": "marketing-poslovi",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Prati nove full-time remote Marketing / Business oglase stranih firma dostupne iz Srbije (Himalayas, We Work Remotely, Remote OK, Working Nomads, JobRack, LinkedIn, Wellfound, Jobicy, Remotive) + lokalni UI na :3009",
+  "engines": { "node": ">=22.6" },
+  "scripts": {
+    "start": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/server.ts",
+    "serve": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/server.ts",
+    "scrape": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/scrape.ts",
+    "scrape:force": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/scrape.ts --force",
+    "scrape:loop": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/scrape.ts --loop",
+    "score": "node --experimental-strip-types --disable-warning=ExperimentalWarning src/check-score.ts"
+  }
+}
